@@ -1,0 +1,5 @@
+#!/bin/bash
+mit() {
+	find -type d -not -path "*\.git*" -exec sh -c '[ -d "$0"/.git ]' '{}' \; -exec git -C {} "$@" \; -print 2> /dev/null;
+}
+mit "$@"

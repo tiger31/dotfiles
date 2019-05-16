@@ -1,0 +1,5 @@
+#!/bin/bash
+swapfile="/tmp/$1.$(date +%s).swap"
+mv $1 $swapfile
+mv $2 $1
+mv $swapfile $2
