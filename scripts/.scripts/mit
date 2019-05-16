@@ -1,5 +1,7 @@
 #!/bin/bash
 mit() {
-	find -type d -not -path "*\.git*" -exec sh -c '[ -d "$0"/.git ]' '{}' \; -exec git -C {} "$@" \; -print 2> /dev/null;
+	[[ $1 == "-r" ]] && depth="" || depth="-maxdepth 1";
+	args=($@);
+	find . $maxdepth -type d -not -path "*\.git*" -exec sh -c '[ -d "$0"/.git ]' '{}' \; -exec git -C {} "${args[@]:1}" \; -print;
 }
 mit "$@"
